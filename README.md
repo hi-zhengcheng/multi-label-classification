@@ -42,7 +42,7 @@
     Tip: Create `train.tfrecords` and `eval.tfrecords` separately. `read_tfrecord.py` is just a tool script to read data from tfrecords for test purpose.
 
 ## 2. Base network definition and pre-trained checkpoints.
-1. This library do image feature extraction by pre-trained resnet_50 model. I have downloaded network definition file from [ResNet V2 50](https://github.com/tensorflow/models/blob/master/research/slim/nets/resnet_v2.py), you still need to [download the pre-trained checkpoint](http://download.tensorflow.org/models/resnet_v2_50_2017_04_14.tar.gz).
+1. This library do image feature extraction by pre-trained resnet_50 model. I have downloaded network definition files(`resnet_utils.py`, `resnet_v2.py`) from [ResNet V2 50](https://github.com/tensorflow/models/blob/master/research/slim/nets/resnet_v2.py), you still need to [download the pre-trained checkpoint](http://download.tensorflow.org/models/resnet_v2_50_2017_04_14.tar.gz).
 
 1. You can also change the file `multi_label_classification_model.py` to use rest101 or other models. [Find the networks and pre-trained models from here](https://github.com/tensorflow/models/tree/master/research/slim).
 
