@@ -2,6 +2,8 @@
 
 ## 1. Data Preparation
 
+To make tensorflow run in high efficiency, first save data in TFRecord files.
+
 1. Create one dir and copy all images into this dir. We call it `image_dir`.
 
 1. Create `image_list` txt file. The format is like:
@@ -72,6 +74,8 @@
 
 ## 5. Evaluation
 
+After start train script, start the evaluation script, let it run in parallel with train:
+
 1. Config model. In `evaluate.py`, modify the params of `ModelConfig` creation.
 
 1. Config eval. In `evaluate.py`, modify the params of `EvalConfig`.
@@ -82,6 +86,8 @@
     ```
 
 ## 6. Inference
+
+Use `tensorboard` to monitor the training process. When the model is likely to be overfitting, start it, choose one good checkpoint, and use this checkpoint to do inference operation on test dataset:
 
 1. Config model. In `inference.py`, modify the params of `ModelConfig` creation.
 
@@ -101,3 +107,13 @@
     ```
     python inference.py
     ```
+
+## 7. Threshold calibration
+
+After inference, the model produces score (or confidence) values for each label. It's time to choose threshold values to decide whether specific label belongs to an image or not. Method is:
+
+1. Use trained model to do inference on evaluation dataset. It produces the scores for evaluation dataset.
+
+1. Use `threshold_calibration.py` to compute optimal thresholds for each label.
+
+1. Use the computed optimal thresholds on the test dataset's inference result.
